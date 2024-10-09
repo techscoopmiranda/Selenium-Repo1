@@ -1,22 +1,21 @@
-      pipeline {
+pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://your-repo-url.git'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building'
+                sh 'mvn clean test'
             }
         }
-          stage('Test') {
+        stage('Publish Results') {
             steps {
-                echo 'Testing'
-            }
-        }
-          stage('Deploy') {
-            steps {
-                echo 'Deploying'
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
-}
 }
