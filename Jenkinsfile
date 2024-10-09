@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://your-repo-url.git'
+                git 'https://github.com/techscoopmiranda/Selenium-Repo1.git'
             }
         }
         stage('Build') {
